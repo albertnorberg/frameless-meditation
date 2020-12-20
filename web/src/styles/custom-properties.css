@@ -1,5 +1,9 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+
 :root {
   --font-family-sans: "Source Sans Pro", sans-serif;
+  font-family: "Questrial";
 
   --color-black: #202123;
   --color-dark-gray: #32373e;
