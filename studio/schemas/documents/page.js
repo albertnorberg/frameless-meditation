@@ -2,6 +2,7 @@ export default {
   type: 'document',
   name: 'page',
   title: 'Page',
+  __experimental_actions: [/*'create',*/ 'update', /*'delete',*/ 'publish'], 
   fields: [
     {
       name: 'title',
@@ -22,9 +23,9 @@ export default {
       title: 'Page sections',
       description: 'Add, edit, and reorder sections',
       of: [
-        { type: 'pricing' },
+        // { type: 'pricing' },
         { type: 'phxHero' },
-        { type: 'hero' },
+        // { type: 'hero' },
         { type: 'infoRows' },
         { type: 'ctaColumns' },
         { type: 'ctaPlug' },

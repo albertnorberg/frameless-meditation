@@ -4,7 +4,7 @@ import PreviewIFrame from '../../src/components/previewIFrame'
 import { MdMenu } from "react-icons/md"
 
 export default S.listItem()
-  .title('Page Builder')
+  .title('Pages')
   .child(
     S.list()
       .title('Landing Pages')

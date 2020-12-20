@@ -1,6 +1,7 @@
 export default {
   type: 'document',
   name: 'navigationMenu',
+  __experimental_actions: [/*'create',*/ 'update', /*'delete',*/ 'publish'], 
   fields: [
     {
       type: 'string',
