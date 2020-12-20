@@ -18,7 +18,7 @@ const query = graphql`
 
 const styles = {
   container: {
-    backgroundColor: "rgba(0,0,0, 0.7)",
+    backgroundColor: 'black',
     height: 75,
     padding: "0px 20px 0px 20px",
     width: "100%",
@@ -42,9 +42,11 @@ const useStyles = makeStyles(theme => ({
   link: {
     transition: "all .4s",
     padding: "0px 10px",
+    color: theme.palette.primary.main,
     textDecoration: "none",
     "&:hover": {
-      textDecoration: "underline"
+      textDecoration: "underline",
+      color: theme.palette.primary.light
     }
   }
 }));
@@ -88,9 +90,6 @@ const Header = ({ showNav, siteTitle, scrolled, textWhite = true, width }) => {
                         </a>
                       );
                     })}
-                    <Link className={classes.link} to="/">
-                      Hem
-                    </Link>
                   </div>
                 )}
               </div>

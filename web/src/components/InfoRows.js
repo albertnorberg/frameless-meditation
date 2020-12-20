@@ -19,7 +19,7 @@ const maybeImage = illustration => {
     );
 
     img = (
-      <img className="w-full sm:h-64 mx-auto" src={fluidProps.src} alt={illustration.image.alt} />
+      <img className="w-full sm:h-64 mx-auto" style={{objectFit: "cover"}} src={fluidProps.src} alt={illustration.image.alt} />
     );
   }
   return img;
@@ -73,7 +73,9 @@ const InfoRows = props => {
         <div className="w-full mb-4">
           <div className="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
         </div>
+        <div style={{ paddingTop: 30}}>
         {contentRows}
+        </div>
       </div>
     </section>
   );

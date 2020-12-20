@@ -108,6 +108,7 @@ const Page = (props) => {
 
   return (
     <Layout navMenuItems={menuItems} textWhite={true}>
+      <div style={{ width: "100%", height: 75 }}></div>
       <SEO
         title={pageTitle ? pageTitle : site.title}
         description={site.description}

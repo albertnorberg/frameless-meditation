@@ -58,7 +58,7 @@ class Layout extends React.Component {
           textWhite={textWhite}
           width={width}
         />
-        <>{children}</>
+        <div style={{minHeight: "calc(100vh - 200px)"}}>{children}</div>
         <Footer siteTitle={siteTitle} />
         </ThemeProvider>
       </>
