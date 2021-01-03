@@ -1,7 +1,7 @@
 export default {
   type: 'object',
   name: 'phxHero',
-  title: 'Phoenix Hero',
+  title: 'Hero',
   fields: [
     {
       name: 'label',
@@ -15,6 +15,11 @@ export default {
     {
       name: 'tagline',
       type: 'simpleBlockContent'
+    },
+    {
+      name: 'darkOpacityOverlay',
+      type: 'boolean',
+      title: 'Dark opacity overlay'
     },
     {
       name: 'illustration',

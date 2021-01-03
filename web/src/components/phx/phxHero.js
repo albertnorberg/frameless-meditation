@@ -1,13 +1,12 @@
 import React from "react";
 import PortableText from "../portableText";
 import CTALink from "../CTALink";
-import { makeStyles } from "@material-ui/core/styles";
+import {  makeStyles} from "@material-ui/core/styles";
 import { buildImageObj } from "../../lib/helpers";
 import { imageUrlFor } from "../../lib/image-url";
 
 const useStyles = makeStyles(theme => ({
   backdrop: props => ({
-    backgroundColor: "darkgrey",
     width: "100%",
     minHeight: "calc(100vh - 75px)",
     backgroundImage: `url(${imageUrlFor(buildImageObj(props.illustration.image))
@@ -20,43 +19,53 @@ const useStyles = makeStyles(theme => ({
   })
 }));
 
-const styles = {
-  outerContentContainer: {
-    position: "absolute",
-    width: "100%",
-    height: 'auto',
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    textAlign: "center",
-    flexDirection: "column",
-    padding: 20,
-    minHeight: "calc(100vh - 75px)",
-  },
-  innerContentContainer: {
-    maxHeight: "calc(100vh - 75px)",
-    overflow: 'hidden',
-    maxWidth: 800
-  },
-  overlay: {
-    position: "absolute",
-    backgroundColor: "rgba(0,0,0, 0.5)",
-    width: "100%",
-    minHeight: "calc(100vh - 75px)"
-  }
-};
-
 function PhxHero(props) {
   const classes = useStyles(props);
-
+  const { mobile, darkOpacityOverlay } = props
+  
+  const styles = {
+    outerContentContainer: {
+      position: "absolute",
+      width: "100%",
+      height: 'auto',
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      textAlign: "center",
+      flexDirection: "column",
+      padding: 20,
+      minHeight: "calc(100vh - 75px)",
+    },
+    innerContentContainer: {
+      maxHeight: "calc(100vh - 75px)",
+      overflow: 'hidden',
+      maxWidth: 800
+    },
+    overlay: {
+      position: "absolute",
+      backgroundColor: "rgba(0,0,0, 0.5)",
+      width: "100%",
+      minHeight: "calc(100vh - 75px)"
+    },
+    heading: {
+      fontSize: mobile ? "2.25rem" : "3.5rem",
+      lineHeight: "1.25", 
+    },
+    text: {
+      lineHeight: "1.25",
+      fontSize: mobile ? "1rem" : "1.5rem",
+      marginTop: "1rem",
+      marginBottom: "2rem"
+    }
+  };
   return (
     <div className={classes.backdrop}>
-      <div style={styles.overlay}></div>
+      {darkOpacityOverlay && <div style={styles.overlay}></div>}
       <div style={styles.outerContentContainer}>
         <div style={styles.innerContentContainer}>
           <p className="uppercase tracking-loose w-full">{props.label}</p>
-          <h1 className="my-4 text-5xl font-bold leading-tight">{props.heading}</h1>
-          <div className="leading-normal text-2xl mb-8">
+          <h1 style={styles.heading} >{props.heading}</h1>
+          <div style={styles.text}>
             <PortableText blocks={props.tagline} />
           </div>
           {props.cta && props.cta.title && (
@@ -70,5 +79,7 @@ function PhxHero(props) {
     </div>
   );
 }
+
+
 
 export default PhxHero;
