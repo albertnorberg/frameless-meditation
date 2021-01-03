@@ -13,6 +13,17 @@ export default {
     {
       type: 'illustration',
       name: 'illustration'
+    },
+    {
+      name: 'ctas',
+      title: 'Call to action buttons',
+      type: 'array',
+      of: [
+        {
+          name: 'cta',
+          type: 'cta'
+        }
+      ]
     }
   ]
 }

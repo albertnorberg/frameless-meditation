@@ -11,6 +11,7 @@ import Pricing from "../components/pricing";
 import GraphQLErrorList from "../components/graphql-error-list";
 import SEO from "../components/seo";
 import Layout from "../containers/layout";
+import withWidth from "@material-ui/core/withWidth";
 
 export const query = graphql`
   query PageTemplateQuery($id: String!) {
@@ -42,10 +43,9 @@ export const query = graphql`
   }
 `;
 
-const Page = (props) => {
-  const { data, errors } = props;
-
-  console.log({data})
+const Page = props => {
+  const { data, errors, width } = props;
+  const mobile = width === "sm" || width === "xs";
 
   if (errors) {
     return (
@@ -64,10 +64,12 @@ const Page = (props) => {
   }
 
   const page = data.page || data.route.page;
-  console.log("page._rawContent: ", page._rawContent);
+  const colors = {
+    primary: (site.primaryColor && site.primaryColor.hex) || "#d53369",
+    secondary: (site.secondaryColor && site.secondaryColor.hex) || "#daae51"    
+  }
 
   const content = (page._rawContent || [])
-    .filter((c) => !c.disabled)
     .filter(c => !c.disabled)
     .map((c, i, index) => {
       let el = null;
@@ -76,13 +78,13 @@ const Page = (props) => {
           el = <Pricing key={c._key + i} {...c} />;
           break;
         case "infoRows":
-          el = <InfoRows key={c._key + i} {...c} />;
+          el = <InfoRows key={c._key + i} {...c} mobile={mobile} colors={colors} />;
           break;
         case "hero":
           el = <Hero key={c._key + i} {...c} />;
           break;
         case "phxHero":
-          el = <PhxHero key={c._key + i} {...c} />;
+          el = <PhxHero key={c._key + i} {...c} mobile={mobile} />;
           break;
         case "ctaColumns":
           el = <CTAColumns key={c._key + i} {...c} />;
@@ -96,25 +98,23 @@ const Page = (props) => {
       return el;
     });
 
-    
-
   const gradient = {
-    from: (site.primaryColor && site.primaryColor.hex) || "#d53369",
-    to: (site.secondaryColor && site.secondaryColor.hex) || "#daae51",
+    from: colors.primary,
+    to: colors.secondary
   };
 
   const menuItems = page.navMenu && (page.navMenu.items || []);
   const pageTitle = data.route && !data.route.useSiteTitle && page.title;
 
   return (
-    <Layout navMenuItems={menuItems} textWhite={true}>
+    <Layout navMenuItems={menuItems} textWhite={true} colors={colors}>
       <div style={{ width: "100%", height: 75 }}></div>
       <SEO
         title={pageTitle ? pageTitle : site.title}
         description={site.description}
         keywords={site.keywords}
         bodyAttr={{
-          class: "leading-normal tracking-normal text-white gradient",
+          class: "leading-normal tracking-normal text-white gradient"
         }}
         gradient={gradient}
       />
@@ -123,4 +123,4 @@ const Page = (props) => {
   );
 };
 
-export default Page;
+export default withWidth()(Page);;

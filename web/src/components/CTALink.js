@@ -29,6 +29,7 @@ const CTALink = props => {
         id="navAction"
         onClick={() => doNavigate(link)}
         className={props.buttonActionClass || ""}
+        style={props.buttonStyles}
       >
         {props.title}
       </button>
@@ -45,7 +46,7 @@ const CTALink = props => {
   }
 
   return (
-    <Link className="mr-3" to={link}>
+    <Link className={props.linkActionClass || "mr-3"} style={props.linkStyles} to={link}>
       {props.title}
     </Link>
   );
