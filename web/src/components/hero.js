@@ -9,7 +9,7 @@ const maybeImage = illustration => {
   if (illustration && illustration.image && illustration.image.asset && !illustration.disabled) {
     const fluidProps = getFluidGatsbyImage(
       illustration.image.asset._id,
-      { maxWidth: 960 },
+      { maxWidth: 1280 },
       clientConfig.sanity
     );
 
