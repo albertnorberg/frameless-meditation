@@ -1,5 +1,6 @@
 export default {
   type: 'object',
+  title: 'Text with illustration',
   name: 'textWithIllustration',
   fields: [
     {

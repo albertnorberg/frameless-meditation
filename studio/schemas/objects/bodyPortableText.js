@@ -74,10 +74,10 @@ export default {
           }
         ]
       },
-      of: [
-        { type: 'authorReference' },
-        { type: 'math', icon: mathInlineIcon, title: 'Inline math' }
-      ]
+      // of: [
+      //   { type: 'authorReference' },
+      //   { type: 'math', icon: mathInlineIcon, title: 'Inline math' }
+      // ]
     },
     // You can add additional types here. Note that you can't use
     // primitive types such as 'string' and 'number' in the same array

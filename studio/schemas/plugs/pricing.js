@@ -1,5 +1,6 @@
 export default {
   type: 'object',
+  title: 'Pricing',
   name: 'pricing',
   fields: [
     {

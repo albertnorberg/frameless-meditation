@@ -1,6 +1,7 @@
 export default {
   type: 'object',
   name: 'experiment',
+  title: 'Experiment',
   fields: [
     {
       name: 'active',
