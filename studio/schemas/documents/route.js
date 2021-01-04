@@ -13,7 +13,7 @@ export default {
   name: 'route',
   type: 'document',
   title: 'Landing page routes',
-  // __experimental_actions: [/*'create',*/ 'update', /*'delete',*/ 'publish'],
+  __experimental_actions: [/*'create',*/ 'update', /*'delete',*/ 'publish'],
   icon: MdLink,
   initialValue: {
     useSiteTitle: false,
