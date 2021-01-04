@@ -10,6 +10,7 @@ import navMenu from './documents/navMenu'
 import author from './documents/author'
 import category from './documents/category'
 import post from './documents/post'
+import footer from './documents/footer'
 import page from './documents/page'
 import siteSettings from './documents/siteSettings'
 import route from './documents/route'
@@ -51,6 +52,7 @@ export default createSchema({
       simpleBlockContent,
       cta,
       siteSettings,
+      footer,
       // post,
       navMenu,
       page,
