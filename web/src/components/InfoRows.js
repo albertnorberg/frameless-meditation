@@ -15,10 +15,11 @@ const maybeImage = illustration => {
     img = (
       <img
         src={imageUrlFor(buildImageObj(illustration.image))
-          .width(800)
-          .height(Math.floor((9 / 16) * 800))
+          // .width(800)
+          // .height(Math.floor((9 / 16) * 800))
           .auto("format")
-          .url()}
+          .url()
+        }
         alt={illustration.image.alt}
       />
     );
@@ -29,8 +30,6 @@ const maybeImage = illustration => {
 const InfoRow = props => {
   const img = maybeImage(props.illustration);
   const { flipped, mobile, ctas, colors } = props;
-
-  console.log({colors});
 
   const thisStyles = {
     rowContainer: {
@@ -52,11 +51,15 @@ const InfoRow = props => {
     },
     imageContainer: {
       flex: 1,
+      display: 'flex',
+      justifyContent: 'center',
       paddingRight: !flipped ? 0 : "2rem",
       paddingLeft: flipped ? 0 : "2rem"
     },
     imageContainerMobile: {
-      width: "100%"
+      width: "100%",
+      display: 'flex',
+      justifyContent: 'center',
     }
   };
 
@@ -72,7 +75,7 @@ const InfoRow = props => {
       <div style={mobile ? thisStyles.textContentContainerMobile : thisStyles.textContentContainer}>
         <h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">{props.title}</h3>
         <div className="text-gray-600">
-          <PortableText blocks={props.text} />
+          {props.text && <PortableText blocks={props.text} />}
         </div>
         <div>
           {ctas &&
