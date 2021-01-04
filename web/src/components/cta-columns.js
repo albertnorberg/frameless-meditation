@@ -1,8 +1,9 @@
 import React from "react";
 import PortableText from "./portableText";
 
-const CTAColumn = ({ width, label, title, body, ctas = [] }) => {
+const CTAColumn = ({ width, label, title, body, colors, ctas = [] }) => {
   const className = `w-full md:w-1/${width} p-6 flex flex-col flex-grow flex-shrink`;
+  const buttonClass = `mx-auto hover:underline text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg`
 
   const actions = ctas
     .filter(c => c.title)
@@ -10,7 +11,8 @@ const CTAColumn = ({ width, label, title, body, ctas = [] }) => {
       return (
         <div key={i} className="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
           <div className="flex items-center justify-start">
-            <button className="mx-auto hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg">
+            {/* <button className="mx-auto hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg"> */}
+            <button className={buttonClass} style={{backgroundColor: colors.secondary }}>
               {c.title}
             </button>
           </div>
@@ -20,25 +22,25 @@ const CTAColumn = ({ width, label, title, body, ctas = [] }) => {
 
   return (
     <div className={className}>
-      <div className="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
-        <button className="flex flex-wrap no-underline hover:no-underline">
-          <p className="w-full text-gray-600 text-xs md:text-sm px-6">{label}</p>
-          <div className="w-full font-bold text-xl text-gray-800 px-6">{title}</div>
-          <div className="text-gray-800 text-base px-6 mb-5">
+      <div className="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow py-6 px-6">
+        <div className="flex-col flex-wrap items-center text-center">
+          <p className="text-gray-600 text-xs md:text-sm">{label}</p>
+          <div className="font-bold text-xl text-gray-800">{title}</div>
+          <div className="text-gray-800 text-base">
             <PortableText blocks={body} />
           </div>
-        </button>
+        </div>
       </div>
       {actions}
     </div>
   );
 };
 
-const CTAColumns = ({ title, columns }) => {
+const CTAColumns = ({ title, columns, colors }) => {
   const cols = columns
     .filter(c => !c.disabled)
     .map((c, i) => {
-      return <CTAColumn width={columns.length} key={c._key + i} {...c} />;
+      return <CTAColumn width={columns.length} key={c._key + i} {...c} colors={colors} />;
     });
 
   return (

@@ -1,4 +1,4 @@
-import { Link, StaticQuery } from "gatsby";
+import { Link, StaticQuery, graphql } from "gatsby";
 import React from "react";
 import Logo from "../../images/logo.svg";
 import Drawer from "./drawer";

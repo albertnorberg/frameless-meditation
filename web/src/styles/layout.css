@@ -1,3 +1,4 @@
+@import './custom-properties.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
