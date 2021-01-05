@@ -4,8 +4,12 @@ export default {
   title: 'Social link',
   fields: [
     {
+      title: 'Url',
       name: 'url',
-      type: 'string'
+      type: 'url',
+      validation: Rule => Rule.uri({
+        scheme: ['http', 'https']
+      })
     }
   ],
   preview: {
@@ -31,7 +35,6 @@ export default {
         if (url.includes("insta")) {
           return "Instagram"
         }
-
       }
 
       return {

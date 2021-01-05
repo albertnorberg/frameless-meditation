@@ -51,15 +51,13 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Header = ({ showNav, siteTitle, scrolled, textWhite = true, width }) => {
+const Header = ({ showNav, siteTitle, scrolled, textWhite = true, mobile }) => {
   const classes = useStyles();
   let headerClass = "fixed w-full z-30 top-0 text-white";
   let titleClass = "toggleColour no-underline hover:no-underline font-bold text-2xl lg:text-4xl";
 
   titleClass += !textWhite || scrolled ? " text-gray-800" : "";
   titleClass += textWhite || !scrolled ? " text-white" : "";
-
-  const mobile = width === "sm" || width === "xs";
 
   return (
     <StaticQuery

@@ -44,6 +44,7 @@ class Layout extends React.Component {
       width
     } = this.props;
     const { scrolled } = this.state;
+    const mobile = width === "sm" || width === "xs";
 
     return (
       <>
@@ -56,10 +57,10 @@ class Layout extends React.Component {
           showNav={showNav}
           scrolled={scrolled}
           textWhite={textWhite}
-          width={width}
+          mobile={mobile}
         />
         <div style={{minHeight: "calc(100vh - 200px)"}}>{children}</div>
-        <Footer siteTitle={siteTitle} />
+        <Footer siteTitle={siteTitle} mobile={mobile} />
         </ThemeProvider>
       </>
     );

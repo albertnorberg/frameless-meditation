@@ -5,7 +5,7 @@ import landingPages from './src/structure/landingPages'
 import PreviewIFrame from './src/components/previewIFrame'
 
 const hiddenDocTypes = (listItem) =>
-  !['route', 'navigationMenu', 'post', 'page', 'siteSettings', 'author', 'category'].includes(
+  !['route', 'navigationMenu', 'post', 'page', 'siteSettings', 'author', 'category', 'footer'].includes(
     listItem.getId()
   )
 
@@ -32,6 +32,16 @@ export default () =>
             .schemaType('page')
             .documentId('frontpage')
             .views([S.view.form(), PreviewIFrame()])
+        ),
+        S.documentListItem()
+        .schemaType('footer')
+        .title('Footer')
+        .icon(GoSettings)
+        .child(
+          S.document()
+            .schemaType('footer')
+            .documentId('footer')
+            // .views([S.view.form(), PreviewIFrame()])
         ),
       // blog,
       landingPages,
