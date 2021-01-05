@@ -58,8 +58,8 @@ const InfoRow = props => {
     },
     imageContainerMobile: {
       width: "100%",
-      display: 'flex',
-      justifyContent: 'center',
+      // display: 'flex',
+      // justifyContent: 'center',
     }
   };
 
