@@ -3,13 +3,13 @@ import PortableText from "../components/portableText";
 import CTALink from "./CTALink";
 
 const CTA = ({ label, title, body, ctas }) => (
-  <section className="container mx-auto text-center py-6 mb-12">
-    <h1 className="w-full my-2 text-5xl font-bold leading-tight text-center text-white">{title}</h1>
+  <section className="container mx-auto text-center py-6 px-6">
+    <h1 className="w-full my-2 text-4xl lg:text-5xl font-bold leading-tight text-center text-white">{title}</h1>
     <div className="w-full mb-4">
       <div className="h-1 mx-auto bg-white w-1/6 opacity-25 my-0 py-0 rounded-t"></div>
     </div>
 
-    <div className="my-4 text-3xl leading-tight">
+    <div className="my-4 text-xl lg:text-2xl leading-tight">
       <PortableText blocks={body} />
     </div>
 
@@ -19,7 +19,7 @@ const CTA = ({ label, title, body, ctas }) => (
           <CTALink
             key={`cta_${i}`}
             {...c}
-            buttonActionClass="mx-auto ml-4 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg"
+            buttonActionClass="mx-auto hover:underline lg:text-lg bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg"
           />
         </div>
       ))}

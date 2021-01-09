@@ -73,8 +73,8 @@ const InfoRow = props => {
       {flipped && !mobile && img && getImage()}
 
       <div style={mobile ? thisStyles.textContentContainerMobile : thisStyles.textContentContainer}>
-        <h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">{props.title}</h3>
-        <div className="text-gray-600">
+        <h3 className="text-3xl lg:text-4xl text-gray-800 font-bold leading-none mb-3">{props.title}</h3>
+        <div className="text-gray-600 lg:text-lg font-light">
           {props.text && <PortableText blocks={props.text} />}
         </div>
         <div>
@@ -85,8 +85,8 @@ const InfoRow = props => {
                 <CTALink
                   key={cta._key}
                   {...cta}
-                  buttonActionClass="hover:underline bg-black text-white rounded-full py-4 px-8 shadow-lg mt-5 mr-5"
-                  linkActionClass="hover:underline text-black mr-3"
+                  buttonActionClass="hover:underline bg-black text-white lg:text-lg rounded-full py-4 px-8 shadow-lg mt-5 mr-5"
+                  linkActionClass="hover:underline text-black mr-3 lg:text-lg"
                   buttonStyles={{backgroundColor: colors.secondary }}
                 />
               );
@@ -109,7 +109,7 @@ const InfoRows = props => {
   return (
     <section className="bg-white border-b py-8">
       <div className="container max-w-screen-xl mx-auto m-8 px-6">
-        <h1 className="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
+        <h1 className="w-full my-2 text-4xl md:text-5xl font-bold leading-tight text-center text-gray-800">
           {props.title}
         </h1>
         <div className="w-full mb-8">

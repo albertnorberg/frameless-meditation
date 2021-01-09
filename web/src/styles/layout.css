@@ -3,10 +3,6 @@
 @tailwind components;
 @tailwind utilities;
 
-ul {
-  list-style: disc;
-}
-
 h1 {
   font-size: 1.875rem;
   font-weight: 800;
@@ -25,4 +21,19 @@ h3 {
 h4 {
   font-size: 1.15rem;
   font-weight: 600;
+}
+
+ol,
+ul {
+  margin: 1.2em;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+ol {
+  list-style: decimal;
+}
+
+ul {
+  list-style: disc;
 }
