@@ -2,6 +2,7 @@ import { Link, StaticQuery, graphql } from "gatsby";
 import React from "react";
 import Logo from "../../images/logo.svg";
 import Drawer from "./drawer";
+import PhxFullpageMenu from "./phxFullpageMenu";
 import { makeStyles } from "@material-ui/core/styles";
 
 const query = graphql`
@@ -76,7 +77,11 @@ const Header = ({ showNav, siteTitle, scrolled, textWhite = true, mobile }) => {
                     alt="logo"
                   />
                 </Link>
-                {mobile && <Drawer navMenuItems={navMenuItems} />}
+                {/* {mobile && <Drawer navMenuItems={navMenuItems} />} */}
+                
+                {
+                  mobile && <PhxFullpageMenu navMenuItems={navMenuItems} />
+                }
 
                 {!mobile && navMenuItems && (
                   <div>
