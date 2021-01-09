@@ -18,8 +18,8 @@ const thisStyles = {
   menuContainer: {
     transition: "all .4s",
     position: "absolute",
-    top: 0,
-    left: "-100vw",
+    top: "-100vh",
+    left: 0,
     backgroundColor: "rgba(0,0,0, 0.9)",
     width: "100vw",
     minHeight: "100vh",
@@ -60,26 +60,29 @@ export default function PhxFullpageMenu(props) {
       <IconButton onClick={toggleMenu()} style={{ color: "white" }}>
         <MenuIcon />
       </IconButton>
-
-
-        <div style={thisStyles.menuContainer}  style={Object.assign({}, {...thisStyles.menuContainer}, state.open && { left: 0 } )  }>
-          <div style={thisStyles.closeButton}>
-            <IconButton onClick={toggleMenu()} style={{ color: "white" }}>
-              <CloseIcon fontSize="large" />
-            </IconButton>
-          </div>
-          <div className="text-5xl md:text-6xl pb-8" style={thisStyles.itemsContainer}>
-            {navMenuItems.length > 0 ?
-              navMenuItems.map(item => {
-                return (
-                  <a className={classes.link} href={item.route ? item.route : item.link}>
-                    {item.title}
-                  </a>
-                );
-              }) : <div className="text-base text-center px-8">Seem like there are no items in your menu... Either you just have to add some items to your menu in the dashboard or this is broken for some reason.</div>}
-          </div>
+      <div style={Object.assign({}, { ...thisStyles.menuContainer }, state.open && { top: 0 })}>
+        <div style={thisStyles.closeButton}>
+          <IconButton onClick={toggleMenu()} style={{ color: "white" }}>
+            <CloseIcon fontSize="large" />
+          </IconButton>
         </div>
-
+        <div className="text-5xl md:text-6xl pb-8" style={thisStyles.itemsContainer}>
+          {navMenuItems.length > 0 ? (
+            navMenuItems.map(item => {
+              return (
+                <a className={classes.link} href={item.route ? item.route : item.link}>
+                  {item.title}
+                </a>
+              );
+            })
+          ) : (
+            <div className="text-base text-center px-8">
+              Seem like there are no items in your menu... Either you just have to add some items to
+              your menu in the dashboard or this is broken for some reason.
+            </div>
+          )}
+        </div>
+      </div>
     </React.Fragment>
   );
 }
