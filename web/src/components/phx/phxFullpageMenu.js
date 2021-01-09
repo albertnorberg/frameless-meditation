@@ -6,6 +6,9 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => {
   return {
+    menuContainer: {
+      backdropFilter: "blur(3px)",
+    },
     link: {
       transition: "all .4s",
       padding: "0px 10px",
@@ -23,7 +26,6 @@ const thisStyles = {
     backgroundColor: "rgba(0,0,0, 0.9)",
     width: "100vw",
     minHeight: "100vh",
-    backdropFilter: "blur(3px)",
     display: "flex",
     justifyContent: "center",
     flexDirection: "column",
@@ -60,7 +62,7 @@ export default function PhxFullpageMenu(props) {
       <IconButton onClick={toggleMenu()} style={{ color: "white" }}>
         <MenuIcon />
       </IconButton>
-      <div style={Object.assign({}, { ...thisStyles.menuContainer }, state.open && { top: 0 })}>
+      <div className={classes.menuContainer} style={Object.assign({}, { ...thisStyles.menuContainer }, state.open && { top: 0 })}>
         <div style={thisStyles.closeButton}>
           <IconButton onClick={toggleMenu()} style={{ color: "white" }}>
             <CloseIcon fontSize="large" />
