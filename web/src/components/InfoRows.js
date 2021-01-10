@@ -52,14 +52,13 @@ const InfoRow = props => {
     imageContainer: {
       flex: 1,
       display: 'flex',
+      margin: 'auto',
       justifyContent: 'center',
       paddingRight: !flipped ? 0 : "2rem",
       paddingLeft: flipped ? 0 : "2rem"
     },
     imageContainerMobile: {
-      width: "100%",
-      // display: 'flex',
-      // justifyContent: 'center',
+      margin: 'auto'
     }
   };
 
