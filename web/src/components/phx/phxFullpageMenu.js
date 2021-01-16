@@ -70,9 +70,9 @@ export default function PhxFullpageMenu(props) {
         </div>
         <div className="text-5xl md:text-6xl pb-8" style={thisStyles.itemsContainer}>
           {navMenuItems.length > 0 ? (
-            navMenuItems.map(item => {
+            navMenuItems.map((item, index) => {
               return (
-                <a className={classes.link} href={item.route ? item.route : item.link}>
+                <a className={classes.link} href={item.route ? item.route : item.link} key={index}>
                   {item.title}
                 </a>
               );

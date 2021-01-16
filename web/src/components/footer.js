@@ -133,9 +133,9 @@ const Footer = props => {
               </div>
               <div style={{ ...styles.col, ...styles.col2 }}>
                 {activeSocialLinks.length > 0 &&
-                  activeSocialLinks.map(link => {
+                  activeSocialLinks.map((link, index) => {
                     const socialLink = getSocialLink(link.url);
-                    return <a style={styles.socialLink} href={link.url}>{socialLink.icon}</a>
+                    return <a key={index} style={styles.socialLink} href={link.url}>{socialLink.icon}</a>
                   })}
               </div>
             </div>
