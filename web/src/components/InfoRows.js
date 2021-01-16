@@ -36,7 +36,8 @@ const InfoRow = props => {
       position: "relative",
       display: "flex",
       flexWrap: "wrap",
-      padding: "2rem 0"
+      padding: "2rem 0",
+      scrollMargin: 75
     },
     textContentContainer: {
       display: "flex",
@@ -67,8 +68,12 @@ const InfoRow = props => {
       <div style={mobile ? thisStyles.imageContainerMobile : thisStyles.imageContainer}>{img}</div>
     );
   }
+
+
+
+
   return (
-    <div style={thisStyles.rowContainer}>
+    <div style={thisStyles.rowContainer} id={props.tagId ? props.tagId : ""} >
       {flipped && !mobile && img && getImage()}
 
       <div style={mobile ? thisStyles.textContentContainerMobile : thisStyles.textContentContainer}>
@@ -85,7 +90,7 @@ const InfoRow = props => {
                   key={cta._key}
                   {...cta}
                   buttonActionClass="hover:underline bg-black text-white lg:text-lg rounded-full py-4 px-8 shadow-lg mt-5 mr-5"
-                  linkActionClass="hover:underline text-black mr-3 lg:text-lg"
+                  linkActionClass="hover:underline text-black mr-3 lg:text-lg cursor-pointer"
                   buttonStyles={{backgroundColor: colors.secondary }}
                 />
               );
@@ -100,6 +105,7 @@ const InfoRow = props => {
 
 const InfoRows = props => {
   const { mobile } = props;
+  
   const contentRows = (props.rows || [])
     .filter(r => !r.disabled)
     .map((r, i) => {

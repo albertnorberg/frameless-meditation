@@ -38,6 +38,13 @@ export default {
       fieldset: 'link'
     },
     {
+      title: 'Jump link',
+      name: 'jumpLink',
+      type: 'string',
+      description: 'This is for anchor links on the current page',
+      fieldset: 'link'
+    },
+    {
       title: 'Kind',
       name: 'kind',
       type: 'string',
@@ -52,9 +59,10 @@ export default {
       title: 'title',
       landingPage: 'landingPageRoute.slug.current',
       route: 'route',
-      link: 'link'
+      link: 'link',
+      jumpLink: 'jumpLink'
     },
-    prepare ({title, landingPage, route, link}) {
+    prepare ({title, landingPage, route, link, jumpLink}) {
       let subtitle = 'Not set'
       if (landingPage) {
         subtitle = `Route: /${landingPage}`
@@ -64,6 +72,9 @@ export default {
       }
       if (link) {
         subtitle = `External: ${link}`
+      }
+      if (jumpLink) {
+        subtitle = `Jump link: ${jumpLink}`
       }
       return {
         title,

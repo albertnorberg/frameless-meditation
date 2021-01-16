@@ -8,6 +8,7 @@ export { default as ctaColumns } from './ctaColumns'
 export { default as ctaPlug } from './ctaPlug'
 export { default as uiComponentRef } from './uiComponent'
 export { default as pricing } from './pricing'
+export { default as phxJumpButtonLink } from './phxJumpButtonLink'
 /*
 export { default as cta } from './cta'
 export { default as generalArticle } from './article'

@@ -4,6 +4,8 @@ import CTALink from "../CTALink";
 import {  makeStyles} from "@material-ui/core/styles";
 import { buildImageObj } from "../../lib/helpers";
 import { imageUrlFor } from "../../lib/image-url";
+import PhxJumpButton from "./phxJumpButton";
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const useStyles = makeStyles(theme => ({
   backdrop: props => ({
@@ -16,12 +18,13 @@ const useStyles = makeStyles(theme => ({
       .url()})`,
     backgroundSize: "cover",
     backgroundPosition: "center",
+    backgroundAttachment: !props.mobile && props.parallax ? "fixed" : "scroll"
   })
 }));
 
 function PhxHero(props) {
   const classes = useStyles(props);
-  const { mobile, darkOpacityOverlay } = props
+  const { mobile, darkOpacityOverlay, phxJumpButtonLink } = props
   
   const styles = {
     outerContentContainer: {
@@ -39,7 +42,10 @@ function PhxHero(props) {
     innerContentContainer: {
       maxHeight: "calc(100vh - 75px)",
       overflow: 'hidden',
-      maxWidth: 800
+      maxWidth: 800,
+      display: 'flex',
+      flexDirection: 'column',
+      overflow: 'visible'
     },
     overlay: {
       position: "absolute",
@@ -58,22 +64,29 @@ function PhxHero(props) {
       marginBottom: "2rem"
     }
   };
+
   return (
     <div className={classes.backdrop}>
       {darkOpacityOverlay && <div style={styles.overlay}></div>}
       <div style={styles.outerContentContainer}>
         <div style={styles.innerContentContainer}>
           <p className="uppercase tracking-loose w-full">{props.label}</p>
-          <h1 style={styles.heading} >{props.heading}</h1>
+          <h1 className="font-bold" style={styles.heading} >{props.heading}</h1>
           <div style={styles.text}>
             <PortableText blocks={props.tagline} />
           </div>
           {props.cta && props.cta.title && (
             <CTALink
               {...props.cta}
-              buttonActionClass="hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg"
+              buttonActionClass="mx-auto hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg"
             />
           )}
+
+          {!phxJumpButtonLink?.disabled && phxJumpButtonLink?.tagId &&
+            <PhxJumpButton jumpTarget={phxJumpButtonLink?.tagId} icon={<ExpandMoreIcon style={{fontSize: 70}} />}/>
+          }
+
+
         </div>
       </div>
     </div>
