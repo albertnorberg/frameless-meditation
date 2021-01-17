@@ -1,21 +1,34 @@
 import React from "react";
 import { Link, navigate } from "gatsby";
 
-const doNavigate = (target, isNotJumpLink, isNotRoute, isNotExternalLink, isLandingPageRoute) => {
+const doNavigate = (target, isNotJumpLink, isNotRoute, isNotExternalLink, isLandingPageRoute, mobile) => {
   if (!target || !target.length) {
     return;
   }
 
   const internal = /^\/(?!\/)/.test(target);
-  const jumpLink = document.getElementById(target);
+  const jumpLinkElement = document.getElementById(target);
 
-  if (jumpLink && !isNotJumpLink && isNotRoute && isNotExternalLink) {
-    jumpLink.scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    });
+  if (jumpLinkElement && !isNotJumpLink && isNotRoute && isNotExternalLink) {
+    
+    if (mobile) {
+      jumpLinkElement.scrollIntoView(true);
+      const scrolledY = window.scrollY;
+      const headerHeight = 75;
+      const extraPadding = 25;
+      const offsetFixedHeader = headerHeight + extraPadding;
+      if (scrolledY) {
+        window.scroll(0, scrolledY - offsetFixedHeader);
+      }
+
+    } else {
+      jumpLinkElement.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }
+
   } else if (internal) {
-    console.log('INTERNAL')
     navigate(target);
   } else {
     if (!isNotExternalLink || isLandingPageRoute) {
@@ -40,12 +53,13 @@ const CTALink = props => {
   const isNotJumpLink = !props?.jumpLink;
   const isNotRoute = !props?.route;
   const isNotExternalLink = !props?.link;
+  const {mobile } = props; 
 
   if (props.kind === "button") {
     return (
       <button
         id="navAction"
-        onClick={() => doNavigate(link, isNotJumpLink, isNotRoute, isNotExternalLink, isLandingPageRoute)}
+        onClick={() => doNavigate(link, isNotJumpLink, isNotRoute, isNotExternalLink, isLandingPageRoute, mobile)}
         className={props.buttonActionClass || ""}
         style={props.buttonStyles}
       >
@@ -54,11 +68,10 @@ const CTALink = props => {
     );
   }
 
-  if (props.kind === "link" && !isNotJumpLink && !props.link?.length > 0) {
-    console.log('CONFIRMED')
+  if (props.kind !== "button" && !isNotJumpLink && !props.link?.length > 0) {
     return (
       <button
-        onClick={() => doNavigate(link, isNotJumpLink, isNotRoute, isNotExternalLink, isLandingPageRoute)}
+        onClick={() => doNavigate(link, isNotJumpLink, isNotRoute, isNotExternalLink, isLandingPageRoute, mobile)}
         className={props.linkActionClass || "mr-3"}
         style={props.linkStyles}
       >
@@ -69,7 +82,6 @@ const CTALink = props => {
 
   // External
   if (props.link) {
-    console.log("External")
     return (
       <a href={props.link} className={props.linkActionClass || "mr-3"} target="_blank" rel="noopener noreferrer">
         {props.title}

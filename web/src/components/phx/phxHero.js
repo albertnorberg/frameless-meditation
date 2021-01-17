@@ -38,14 +38,13 @@ function PhxHero(props) {
       flexDirection: "column",
       padding: 20,
       minHeight: "calc(100vh - 75px)",
+      overflow: 'hidden'
     },
     innerContentContainer: {
       maxHeight: "calc(100vh - 75px)",
-      overflow: 'hidden',
       maxWidth: 800,
       display: 'flex',
-      flexDirection: 'column',
-      overflow: 'visible'
+      flexDirection: 'column'
     },
     overlay: {
       position: "absolute",
@@ -83,7 +82,7 @@ function PhxHero(props) {
           )}
 
           {!phxJumpButtonLink?.disabled && phxJumpButtonLink?.tagId &&
-            <PhxJumpButton jumpTarget={phxJumpButtonLink?.tagId} icon={<ExpandMoreIcon style={{fontSize: 70}} />}/>
+            <PhxJumpButton jumpTarget={phxJumpButtonLink?.tagId} icon={<ExpandMoreIcon style={{fontSize: 70}} />} mobile={mobile}/>
           }
 
 
