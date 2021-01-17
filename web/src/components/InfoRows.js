@@ -85,7 +85,7 @@ const InfoRow = props => {
             ctas.map(cta => {
 
               if (cta.disabled) {
-                return
+                return null
               }
 
               return (

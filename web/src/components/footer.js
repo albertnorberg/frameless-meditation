@@ -1,7 +1,14 @@
 import React from "react";
 import { Link, StaticQuery, graphql } from "gatsby";
 import imageLogo from "../images/img-logo.svg";
-import { Facebook, Youtube, Linkedin, Patreon, Instagram } from "../images/social/iconComponents/index"
+import {
+  Facebook,
+  Youtube,
+  Linkedin,
+  Patreon,
+  Instagram,
+  Location
+} from "../images/social/iconComponents/index";
 
 const query = graphql`
   query FooterQuery {
@@ -20,41 +27,52 @@ const query = graphql`
 `;
 
 function getSocialLink(url) {
+  console.log("*** url: ", url);
+
   if (url.includes("linkedin")) {
     return {
       platform: "linked_in",
       title: "Linked In",
-      icon: <Linkedin className={'svgIcon'} />
+      icon: <Linkedin className={"svgIcon"} />
     };
   }
   if (url.includes("youtube")) {
     return {
       platform: "youtube",
       title: "YouTube",
-      icon: <Youtube className={'svgIcon'} />
+      icon: <Youtube className={"svgIcon"} />
     };
   }
   if (url.includes("facebook")) {
     return {
       platform: "facebook",
       title: "Facebook",
-      icon: <Facebook className={'svgIcon'} />
+      icon: <Facebook className={"svgIcon"} />
     };
   }
   if (url.includes("patreon")) {
     return {
       platform: "patreon",
       title: "Patreon",
-      icon: <Patreon className={'svgIcon'} />
+      icon: <Patreon className={"svgIcon"} />
     };
   }
   if (url.includes("insta")) {
     return {
       platform: "instagram",
       title: "Instagram",
-      icon: <Instagram className={'svgIcon'}/>
+      icon: <Instagram className={"svgIcon"} />
     };
   }
+  if (url.includes("maps")) {
+    return {
+      platform: "googleMaps",
+      title: "Google Maps",
+      icon: <Location className={"svgIcon"} />
+    };
+  }
+
+  return null;
 }
 
 const Footer = props => {
@@ -82,16 +100,16 @@ const Footer = props => {
     col: {
       display: "flex",
       width: mobile ? "100%" : "50%",
-      textAlign: mobile ? 'center' : 'left',
+      textAlign: mobile ? "center" : "left"
     },
     col1: {
-      flexWrap: 'wrap',
-      justifyContent: mobile ? 'center' : 'flex-start',
+      flexWrap: "wrap",
+      justifyContent: mobile ? "center" : "flex-start"
     },
     col2: {
-      justifyContent: mobile ? 'center' : 'flex-end',
-      alignItems: 'center',
-      flexWrap: 'wrap'
+      justifyContent: mobile ? "center" : "flex-end",
+      alignItems: "center",
+      flexWrap: "wrap"
     },
     logo: {
       width: 100,
@@ -134,8 +152,16 @@ const Footer = props => {
               <div style={{ ...styles.col, ...styles.col2 }}>
                 {activeSocialLinks.length > 0 &&
                   activeSocialLinks.map((link, index) => {
+                    if (link.disabled || !link.url) {
+                      return null;
+                    }
+
                     const socialLink = getSocialLink(link.url);
-                    return <a key={index} style={styles.socialLink} href={link.url}>{socialLink.icon}</a>
+                    return socialLink ? (
+                      <a key={index} style={styles.socialLink} href={link.url}>
+                        {socialLink.icon}
+                      </a>
+                    ) : null;
                   })}
               </div>
             </div>
