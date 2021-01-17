@@ -2,7 +2,7 @@ export default {
   type: 'document',
   title: 'Navigation Menu',
   name: 'navigationMenu',
-  __experimental_actions: [/*'create',*/ 'update', /*'delete',*/ 'publish'], 
+  // __experimental_actions: [/*'create',*/ 'update', /*'delete',*/ 'publish'], 
   fields: [
     {
       type: 'string',

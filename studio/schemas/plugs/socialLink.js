@@ -35,6 +35,9 @@ export default {
         if (url.includes("insta")) {
           return "Instagram"
         }
+        if (url.includes("google.com/maps")) {
+          return "Google Maps"
+        }
       }
 
       return {
