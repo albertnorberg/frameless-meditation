@@ -74,7 +74,7 @@ function PhxHero(props) {
           <div style={styles.text}>
             <PortableText blocks={props.tagline} />
           </div>
-          {props.cta && props.cta.title && (
+          {props.cta && (props.cta?.title && !props.cta?.disabled) && (
             <CTALink
               {...props.cta}
               buttonActionClass="mx-auto hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg"

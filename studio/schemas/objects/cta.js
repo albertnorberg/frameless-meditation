@@ -11,6 +11,11 @@ export default {
   ],
   fields: [
     {
+      name: 'disabled',
+      type: 'boolean',
+      title: 'Disabled'
+    },
+    {
       title: 'Title (required)',
       name: 'title',
       type: 'string',
@@ -60,21 +65,22 @@ export default {
       landingPage: 'landingPageRoute.slug.current',
       route: 'route',
       link: 'link',
-      jumpLink: 'jumpLink'
+      jumpLink: 'jumpLink',
+      disabled: 'disabled'
     },
-    prepare ({title, landingPage, route, link, jumpLink}) {
+    prepare ({title, landingPage, route, link, jumpLink, disabled}) {
       let subtitle = 'Not set'
       if (landingPage) {
-        subtitle = `Route: /${landingPage}`
+        subtitle = !disabled ? `Route: /${landingPage}` : "DISABLED" 
       }
       if (route) {
-        subtitle = `Route: ${route}`
+        subtitle = !disabled ? `Route: ${route}` : "DISABLED"
       }
       if (link) {
-        subtitle = `External: ${link}`
+        subtitle = !disabled ? `External: ${link}` : "DISABLED" 
       }
       if (jumpLink) {
-        subtitle = `Jump link: ${jumpLink}`
+        subtitle = !disabled ? `Jump link: ${jumpLink}` : "DISABLED"
       }
       return {
         title,

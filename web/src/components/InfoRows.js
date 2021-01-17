@@ -83,6 +83,11 @@ const InfoRow = props => {
           {ctas &&
             ctas.length > 0 &&
             ctas.map(cta => {
+
+              if (cta.disabled) {
+                return
+              }
+
               return (
                 <CTALink
                   key={cta._key}
