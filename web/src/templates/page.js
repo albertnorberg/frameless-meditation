@@ -87,7 +87,7 @@ const Page = props => {
           el = <PhxHero key={c._key + i} {...c} mobile={mobile} />;
           break;
         case "ctaColumns":
-          el = <CTAColumns key={c._key + i} {...c} colors={colors} />;
+          el = <CTAColumns key={c._key + i} {...c} colors={colors} mobile={mobile} />;
           break;
         case "ctaPlug":
           el = <CTA key={c._key + i} {...c} />;

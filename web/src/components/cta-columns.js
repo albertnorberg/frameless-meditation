@@ -1,19 +1,24 @@
 import React from "react";
 import PortableText from "./portableText";
+import CTALink from "./CTALink";
 
-const CTAColumn = ({ width, label, title, body, colors, ctas = [] }) => {
+const CTAColumn = ({ width, label, title, body, colors, ctas = [], mobile }) => {
   const className = `w-full md:w-1/${width} p-6 flex flex-col flex-grow flex-shrink`;
-  const buttonClass = `mx-auto hover:underline text-white lg:text-lg font-bold rounded-full my-6 py-4 px-8 shadow-lg`
 
   const actions = ctas
-    .filter(c => c.title)
-    .map((c, i) => {
+    .filter(cta => cta.title)
+    .map((cta, i) => {
       return (
         <div key={i} className="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
           <div className="flex items-center justify-start">
-            <button className={buttonClass} style={{backgroundColor: colors.secondary }}>
-              {c.title}
-            </button>
+            <CTALink
+                  key={cta._key}
+                  mobile={mobile}
+                  {...cta}
+                  buttonActionClass="mx-auto hover:underline bg-black text-white lg:text-lg rounded-full py-4 px-8 shadow-lg mt-5"
+                  linkActionClass="mx-auto hover:underline text-black lg:text-lg cursor-pointer"
+                  buttonStyles={{ backgroundColor: colors.secondary }}
+                />
           </div>
         </div>
       );
@@ -35,11 +40,12 @@ const CTAColumn = ({ width, label, title, body, colors, ctas = [] }) => {
   );
 };
 
-const CTAColumns = ({ title, columns, colors }) => {
+const CTAColumns = ({ title, columns, colors, mobile }) => {
+
   const cols = columns
     .filter(c => !c.disabled)
     .map((c, i) => {
-      return <CTAColumn width={columns.length} key={c._key + i} {...c} colors={colors} />;
+      return <CTAColumn width={columns.length} key={c._key + i} {...c} colors={colors} mobile={mobile} />;
     });
 
   return (

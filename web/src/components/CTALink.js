@@ -46,7 +46,7 @@ const CTALink = props => {
     props.landingPageRoute.slug &&
     props.landingPageRoute.slug.current
   ) {
-    link = props.landingPageRoute.slug.current;
+    link = "/" + props.landingPageRoute.slug.current;
     isLandingPageRoute = true;
   }
 

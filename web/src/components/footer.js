@@ -27,8 +27,6 @@ const query = graphql`
 `;
 
 function getSocialLink(url) {
-  console.log("*** url: ", url);
-
   if (url.includes("linkedin")) {
     return {
       platform: "linked_in",
