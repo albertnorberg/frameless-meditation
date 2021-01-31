@@ -10,7 +10,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 const useStyles = makeStyles(theme => ({
   backdrop: props => ({
     width: "100%",
-    minHeight: "calc(100vh - 75px)",
+    minHeight: 600,
     backgroundImage: `url(${imageUrlFor(buildImageObj(props.illustration.image))
       .width(window.innerWidth)
       .height(window.innerHeight)
@@ -37,11 +37,10 @@ function PhxHero(props) {
       textAlign: "center",
       flexDirection: "column",
       padding: 20,
-      minHeight: "calc(100vh - 75px)",
+      minHeight: 600,
       overflow: 'hidden'
     },
     innerContentContainer: {
-      maxHeight: "calc(100vh - 75px)",
       maxWidth: 800,
       display: 'flex',
       flexDirection: 'column'
@@ -50,7 +49,7 @@ function PhxHero(props) {
       position: "absolute",
       backgroundColor: "rgba(0,0,0, 0.5)",
       width: "100%",
-      minHeight: "calc(100vh - 75px)"
+      minHeight: 600
     },
     heading: {
       fontSize: mobile ? "2.25rem" : "3.5rem",
