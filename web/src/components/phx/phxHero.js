@@ -7,10 +7,12 @@ import { imageUrlFor } from "../../lib/image-url";
 import PhxJumpButton from "./phxJumpButton";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
+const vhMobileDevice = 592;
+
 const useStyles = makeStyles(theme => ({
   backdrop: props => ({
     width: "100%",
-    minHeight: 600,
+    minHeight: props.mobile ? vhMobileDevice : "calc(100vh - 75px)",
     backgroundImage: `url(${imageUrlFor(buildImageObj(props.illustration.image))
       .width(window.innerWidth)
       .height(window.innerHeight)
@@ -37,10 +39,11 @@ function PhxHero(props) {
       textAlign: "center",
       flexDirection: "column",
       padding: 20,
-      minHeight: 600,
+      minHeight: props.mobile ? vhMobileDevice : "calc(100vh - 75px)",
       overflow: 'hidden'
     },
     innerContentContainer: {
+      maxHeight: props.mobile ? vhMobileDevice : "calc(100vh - 75px)",
       maxWidth: 800,
       display: 'flex',
       flexDirection: 'column'
@@ -49,7 +52,7 @@ function PhxHero(props) {
       position: "absolute",
       backgroundColor: "rgba(0,0,0, 0.5)",
       width: "100%",
-      minHeight: 600
+      minHeight: props.mobile ? vhMobileDevice : "calc(100vh - 75px)",
     },
     heading: {
       fontSize: mobile ? "2.25rem" : "3.5rem",
